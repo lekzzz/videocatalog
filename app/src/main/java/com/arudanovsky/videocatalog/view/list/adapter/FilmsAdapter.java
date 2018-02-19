@@ -4,10 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arudanovsky.videocatalog.R;
 import com.arudanovsky.videocatalog.domain.model.Film;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmHolder> 
 
     @Override
     public void onBindViewHolder(FilmHolder holder, int position) {
-        holder.bindView(mList.get(position).getTitle());
+        holder.bindView(mList.get(position));
     }
 
     @Override
@@ -43,13 +45,23 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmHolder> 
     }
 
     class FilmHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+        private final ImageView poster;
+        private final TextView title;
+        private final TextView description;
+        private final TextView vote;
         public FilmHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.text);
+            poster = itemView.findViewById(R.id.poster_image);
+            title = itemView.findViewById(R.id.title);
+            description = itemView.findViewById(R.id.description);
+            vote = itemView.findViewById(R.id.vote);
         }
-        public void bindView(String text) {
-            textView.setText(text);
+        public void bindView(Film film) {
+            title.setText(film.getTitle());
+            description.setText(film.getOverview());
+            vote.setText("Average vote: " + film.getVoteAverage().toString() + "/10");
+            Picasso.with(poster.getContext()).load(film.getPosterPath())
+                    .placeholder(R.drawable.ic_launcher_background).into(poster);
         }
     }
 }
