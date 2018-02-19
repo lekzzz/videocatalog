@@ -1,5 +1,7 @@
 package com.arudanovsky.videocatalog.view.list;
 
+import android.util.Log;
+
 import com.arudanovsky.videocatalog.domain.interactor.films.FilmsInteractor;
 import com.arudanovsky.videocatalog.domain.interactor.films.IFilmsInteractor;
 import com.arudanovsky.videocatalog.domain.model.Film;
@@ -31,6 +33,7 @@ public class FilmListFragmentPresenter extends BasePresenter implements FilmList
             @Override
             public void accept(Throwable throwable) throws Exception {
                 mView.showError(throwable.getMessage());
+                Log.d("error", throwable.getMessage());
             }
         }));
     }

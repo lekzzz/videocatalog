@@ -2,26 +2,27 @@ package com.arudanovsky.videocatalog.domain.model
 
 import com.arudanovsky.videocatalog.data.dto.GenreTO
 import java.io.Serializable
+import java.math.BigDecimal
 
 /**
  * Created by Мегатрон on 19.02.2018.
  */
 class Film: Serializable {
-    val overview: String? = null
-    val originalLanguage: String? = null
-    val originalTitle: String? = null
-    val video: String? = null
-    val title: String? = null
-    val posterPath: String? = null
-    val releaseDate: String? = null
-    val genres: List<Genre?>? = null
-    val popularity: Double? = null
-    val voteAverage: Double? = null
-    val id: Int? = null
-    val adult: Boolean? = null
-    val voteCount: Int? = null
+    var overview: String? = null
+    var originalLanguage: String? = null
+    var originalTitle: String? = null
+    var video: String? = null
+    var title: String? = null
+    var posterPath: String? = null
+    var releaseDate: String? = null
+    var genres: List<Genre?>? = null
+    var popularity: BigDecimal? = null
+    var voteAverage: BigDecimal? = null
+    var id: Int? = null
+    var adult: Boolean? = null
+    var voteCount: Int? = null
 }
 
 class Genre (
-    val name: String? = null
+        var name: String? = null
 )

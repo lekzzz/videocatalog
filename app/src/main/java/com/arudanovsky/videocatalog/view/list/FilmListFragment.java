@@ -41,9 +41,12 @@ public class FilmListFragment extends BaseFragment implements FilmListProtocol.F
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.base_list_layout, container, false);
         RecyclerView rcView = view.findViewById(R.id.rcView);
-        rcView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rcView.setLayoutManager(llm);
         mAdapter = new FilmsAdapter(new ArrayList());
         rcView.setAdapter(mAdapter);
+        mPresenter.subscribe();
         return view;
     }
 

@@ -11,8 +11,8 @@ import retrofit2.http.GET;
  */
 
 public interface FilmsApi {
-    String URL = "https://gist.githubusercontent.com/numbata/5ed307d7953c3f7e716f/raw/b7887adc444188d8aa8e61d39b82950f28c03966";
+    String URL = "https://gist.githubusercontent.com/numbata/5ed307d7953c3f7e716f/raw/b7887adc444188d8aa8e61d39b82950f28c03966/";
 
-    @GET(URL + "/movies.json")
+    @GET(URL + "movies.json")
     Observable<DataListTO> getFilms();
 }
