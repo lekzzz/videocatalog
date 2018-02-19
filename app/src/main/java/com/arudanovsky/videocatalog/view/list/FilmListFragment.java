@@ -21,7 +21,7 @@ import java.util.List;
  * Created by Мегатрон on 19.02.2018.
  */
 
-public class FilmListFragment extends BaseFragment implements FilmListProtocol.FilmListView {
+public class FilmListFragment extends BaseFragment<FilmListActivityInterface> implements FilmListProtocol.FilmListView, FilmsAdapter.OnItemClickListener {
     private FilmListProtocol.FilmListPresenter mPresenter;
     private FilmsAdapter mAdapter;
 
@@ -44,7 +44,7 @@ public class FilmListFragment extends BaseFragment implements FilmListProtocol.F
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rcView.setLayoutManager(llm);
-        mAdapter = new FilmsAdapter(new ArrayList());
+        mAdapter = new FilmsAdapter(new ArrayList(), this);
         rcView.setAdapter(mAdapter);
         mPresenter.subscribe();
         return view;
@@ -52,7 +52,13 @@ public class FilmListFragment extends BaseFragment implements FilmListProtocol.F
 
     @Override
     public void openFilmDetailScreen(Film film) {
+        if (mListener != null)
+            mListener.openFilmInfoScreen(film);
+    }
 
+    @Override
+    public void onItemClick(int position) {
+        mPresenter.onElementClick(position);
     }
 
     @Override

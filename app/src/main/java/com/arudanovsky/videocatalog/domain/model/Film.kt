@@ -25,4 +25,4 @@ class Film: Serializable {
 
 class Genre (
         var name: String? = null
-)
+) : Serializable

@@ -19,9 +19,11 @@ import java.util.List;
 
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmHolder> {
     private List<Film> mList;
+    private OnItemClickListener mListener;
 
-    public FilmsAdapter (List<Film> list) {
+    public FilmsAdapter (List<Film> list, OnItemClickListener listener) {
         mList = list;
+        mListener = listener;
     }
     @Override
     public FilmHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -30,8 +32,15 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmHolder> 
     }
 
     @Override
-    public void onBindViewHolder(FilmHolder holder, int position) {
+    public void onBindViewHolder(final FilmHolder holder, int position) {
         holder.bindView(mList.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener != null)
+                    mListener.onItemClick(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -42,6 +51,10 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmHolder> 
     public void updateList(List<Film> films) {
         mList = films;
         notifyDataSetChanged();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 
     class FilmHolder extends RecyclerView.ViewHolder {

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.jzvd.JZVideoPlayerStandard
+        android:id="@+id/videoplayer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp">
+        <TextView
+            android:id="@+id/film_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Film Title"
+            android:textSize="22sp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@id/film_votes_layout"
+            />
+        <LinearLayout
+            android:id="@+id/film_votes_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/film_avg_vote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:text="8/10"
+                />
+            <TextView
+                android:id="@+id/film_votes_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/film_avg_vote"
+                android:fontFamily="sans-serif"
+                android:text="Votes: 100500"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/film_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/film_votes_layout"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="Some loooooooooooooooooooooooooooooooooooong description"/>
+
+        <TextView
+            android:id="@+id/film_genres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/film_overview"
+            android:layout_marginTop="8dp"
+            android:text="Genres: Action, Drama"/>
+
+    </RelativeLayout>
+</LinearLayout>
